@@ -87,9 +87,10 @@ class DetailsPage extends StatelessWidget {
                             ? 'Remove from favorites'
                             : 'Add to favorites',
                         onPressed: () {
-                          context
-                              .read<DetailsBloc>()
-                              .add(ToggleFavoriteRequested(post.id));
+                          final detailsBloc = context.read<DetailsBloc>();
+
+                          detailsBloc.add(ToggleFavoriteRequested(post.id));
+
                           final message = state.isFavorite
                               ? 'Removed from favorites'
                               : 'Added to favorites';

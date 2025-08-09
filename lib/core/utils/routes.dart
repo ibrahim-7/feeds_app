@@ -8,6 +8,7 @@ class AppRoutes {
   static const login = '/login';
   static const feed = '/feed';
   static const details = '/details';
+  static const favorites = '/favorites';
 
   static Map<String, WidgetBuilder> routes = {
     login: (_) => const LoginPage(),

@@ -4,4 +4,6 @@ abstract class FeedRepository {
   Future<List<Post>> fetchPosts({int start, int limit});
   Future<void> cachePosts(List<Post> posts);
   Future<List<Post>> getCachedPosts();
+
+  Future<List<Post>> getFavoritePosts();
 }

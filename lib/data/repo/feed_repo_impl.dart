@@ -11,6 +11,12 @@ class FeedRepositoryImpl implements FeedRepository {
     required this.remote,
     required this.local,
   });
+  @override
+  Future<List<Post>> getFavoritePosts() async {
+    // If you have a local DB
+    final allPosts = await local.getCachedPosts();
+    return allPosts.where((post) => post.isFavorite).toList();
+  }
 
   @override
   Future<List<Post>> fetchPosts({int start = 0, int limit = 10}) async {

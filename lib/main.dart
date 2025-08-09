@@ -30,7 +30,10 @@ void main() async {
     remote: remoteDataSource,
     local: localDataSource,
   );
-  final authRepository = AuthRepositoryImpl(db: db);
+
+  // Note: AuthRepositoryImpl no longer needs the db param
+  final authRepository = AuthRepositoryImpl();
+
   final feedRepository = FeedRepositoryImpl(
     remote: remoteDataSource,
     local: localDataSource,
@@ -76,8 +79,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Feed App',
-          home:
-              const AuthGate(), // Reacts to AuthBloc states and shows correct screen
+          home: const AuthGate(),
           routes: AppRoutes.routes,
           onGenerateRoute: (settings) {
             if (settings.name == '/details') {
